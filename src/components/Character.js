@@ -13,15 +13,19 @@ export default function Character({ character }) {
   async function clickCard() {
     setLoading(true);
     if (charDetail === undefined) {
-      let res = await axios.get(`${process.env.REACT_APP_URL}/character`, {
-        params: {
-          apiCode: character.api_detail_url.split("/")[5],
-        },
-      });
-      setCharDetail(res.data.results);
-      let m = [];
-      res.data.results.movies.map((movie) => m.push(movie.name));
-      setMovies(m);
+      try {
+        let res = await axios.get("/.netlify/functions/character", {
+          params: {
+            apiCode: character.api_detail.split("/")[5],
+          },
+        });
+        setCharDetail(res.data.results);
+        let m = [];
+        res.data.results.movies.map((movie) => m.push(movie.name));
+        setMovies(m);
+      } catch (error) {
+        console.log("Cannot fetch character:", error);
+      }
     }
     setLoading(false);
     setShowModal(true);

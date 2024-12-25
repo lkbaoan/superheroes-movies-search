@@ -22,12 +22,16 @@ export default function DetailCharacter({ details, movies, onClose }) {
   useEffect(() => {
     async function fetchMovies() {
       if (movies.length === 0) return;
-      let response = await axios.get(`${process.env.REACT_APP_URL}/movies`, {
-        params: {
-          names: movies,
-        },
-      });
-      setMovieDetail(response.data.results);
+      try {
+        let response = await axios.get("/.netlify/functions/movies", {
+          params: {
+            names: JSON.stringify(movies),
+          },
+        });
+        setMovieDetail(response.data.results);
+      } catch (error) {
+        console.log("Cannot fetch movies:", error);
+      }
     }
     fetchMovies();
   }, [movies]);

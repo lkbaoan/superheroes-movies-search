@@ -24,18 +24,19 @@ function App() {
    */
   useEffect(() => {
     setLoading(true);
-    const delayDebounce = setTimeout(() => {
-      axios
-        .get(`${process.env.REACT_APP_URL}/search`, {
+    const delayDebounce = setTimeout(async () => {
+      try {
+        let response = await axios.get("/.netlify/functions/search", {
           params: {
-            input: inputText,
             index: currentPage - 1,
+            input: inputText,
           },
-        })
-        .then((res) => {
-          setCharacters(res.data);
-          setLoading(false);
         });
+        setCharacters(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log("Error:", error);
+      }
     }, 500);
     return () => clearTimeout(delayDebounce);
   }, [inputText, currentPage]);
