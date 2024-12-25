@@ -1,3 +1,7 @@
+# [Comic Movies Search](https://comic-movies-search.netlify.app/)
+
+This project using React to create the website, it also utilize Netlify serverless function to make call to api and database. The characters and movies are based on [Comic Vine api](https://comicvine.gamespot.com/) and [OMDB api](https://www.omdbapi.com/). 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
