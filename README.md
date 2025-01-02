@@ -4,6 +4,9 @@ This project using React to create the website, it also utilize Netlify serverle
 
 To speed up process of searching for comic character, a simple database that contain is needed. This [file](https://github.com/lkbaoan/nodejs-web-server/blob/master/characters.json) contain a json of the characters.
 
+## Demo
+[Comic Movies Search](https://comic-movies-search.netlify.app/)
+
 ## Run
 - Clone project `git clone https://github.com/lkbaoan/superheroes-movies-search.git`
 - Install dependencies `npm install`
